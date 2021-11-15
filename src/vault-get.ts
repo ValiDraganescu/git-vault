@@ -52,11 +52,10 @@ async function main() {
         return;
     }
     const input = fs.readFileSync(storeFile, 'utf8');
-    const rawContents = encryption.decrypt(input);
     let contents: any;
-    if (rawContents && rawContents.length) {
+    if (input && input.length) {
         try {
-            contents = JSON.parse(rawContents);
+            contents = JSON.parse(input);
         } catch (e: any) {
             console.log(chalk.red(`Store ${storeName} is not valid JSON (${e.message})`));
         }
@@ -64,7 +63,7 @@ async function main() {
         contents = {}
     }
 
-    const value = contents[item];
+    const value = encryption.decrypt(contents[item]);
     if (!value) {
         console.log(chalk.red(`Item ${item} does not exist in store ${storeName}`));
     }

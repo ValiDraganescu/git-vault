@@ -49,7 +49,7 @@ async function main() {
     }
     const input = fs.readFileSync(file, 'utf8');
     const decrypted = encryption.decrypt(input);
-    const decryptedFile = path.join(metadata.rootDir, workspaceName, fileName.split('.').slice(0, -1).join('.'));
+    const decryptedFile = path.join(metadata.rootDir, workspaceName, 'decrypted', fileName.split('.').slice(0, -1).join('.'));
     fs.writeFileSync(decryptedFile, decrypted);
     if (deleteOriginal) {
         fs.rmSync(file);

@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import chalk from "chalk";
 import {Encryption} from "./service/encryption";
+import {gitPersist} from "./service/git";
 
 program
     .addOption(new Option('-i, --item <name>', 'the name of the store item'))
@@ -60,11 +61,10 @@ async function main() {
         return;
     }
     const input = fs.readFileSync(storeFile, 'utf8');
-    const rawContents = encryption.decrypt(input);
     let contents: any;
-    if (rawContents && rawContents.length) {
+    if (input && input.length) {
         try {
-            contents = JSON.parse(rawContents);
+            contents = JSON.parse(input);
         } catch (e: any) {
             console.log(chalk.red(`Store ${storeName} is not valid JSON (${e.message})`));
             contents = {};
@@ -73,10 +73,11 @@ async function main() {
         contents = {}
     }
 
-    contents[item] = value;
+    contents[item] = encryption.encrypt(value);
 
-    const output = encryption.encrypt(JSON.stringify(contents));
+    const output = JSON.stringify(contents);
     fs.writeFileSync(storeFile, output);
+    await gitPersist();
     console.log(chalk.cyan('Ok'));
 }
 

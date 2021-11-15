@@ -1,19 +1,18 @@
 #!/usr/bin/env node
-import clear from "clear";
 import {program} from "commander";
 import {fork} from "child_process";
 import path from "path";
 import {getMetadata} from "./service/get-metadata";
 import {updateMetadata} from "./service/update-metadata";
 
-clear();
+// clear();
 // console.log(
 //     chalk.red(
 //         figlet.textSync('vault-cli', {horizontalLayout: 'full'})
 //     )
 // );
 const metadata = getMetadata();
-console.log(metadata);
+// console.log(metadata);
 if (!metadata.isAutoLockActive) {
     metadata.isAutoLockActive = true;
     updateMetadata(metadata);
@@ -22,7 +21,7 @@ if (!metadata.isAutoLockActive) {
 
 
 program
-    .version('1.3.0')
+    .version('1.4.0')
     .description("vault cli for managing secrets")
     .command('init', 'initialize vault with a password').alias('i')
     .command('workspace', 'creates a workspace folder inside the root dir').alias('wp')
@@ -35,5 +34,8 @@ program
     .command('unlock', 'unlocks the vault making the decryption possible').alias('u')
     .command('lock', 'locks the vault making the decryption impossible').alias('l')
     .command('state', 'prints the vault state').alias('s')
+    .command('list-stores', 'lists all the stores in a workspace').alias('lss')
+    .command('list-items', 'lists all the items in a store').alias('lsi')
+    .command('list-workspaces', 'lists all the workspaces').alias('lsw')
 
 program.parse(process.argv);

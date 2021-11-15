@@ -1,2 +1,4 @@
 /node_modules/
 /lib/
+**/decrypted/**
+/vault-lock.log

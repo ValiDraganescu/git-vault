@@ -4,6 +4,7 @@ import path from "path";
 import fs from "fs";
 import chalk from "chalk";
 import {Encryption} from "./service/encryption";
+import {gitPersist} from "./service/git";
 
 program
     .addOption(new Option('-n, --name <name>', 'the name of the file'))
@@ -55,6 +56,7 @@ async function main() {
         fs.rmSync(file);
     }
     console.log(chalk.green(`File ${file} encrypted`));
+    await gitPersist();
 }
 
 main().then();

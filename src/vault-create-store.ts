@@ -3,6 +3,7 @@ import {getMetadata} from "./service/get-metadata";
 import path from "path";
 import fs from "fs";
 import chalk from "chalk";
+import {gitPersist} from "./service/git";
 
 program
     .addOption(new Option('-n, --name <name>', 'the name of the store'))
@@ -51,6 +52,7 @@ async function main() {
     } else {
         console.log(chalk.red(`A workspace with the name ${workspaceName} already exists`));
     }
+    await gitPersist();
 }
 
 main().then();
