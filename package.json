@@ -1,5 +1,5 @@
 {
-  "name": "git-vault",
+  "name": "git-vault-manager",
   "version": "1.4.0",
   "description": "vault for secret management stored on git",
   "main": "./lib/vault.js",

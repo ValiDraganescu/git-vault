@@ -3,6 +3,12 @@
 
 ## Work in progress, do not use this to store secrets :)
 
+## Install
+```shell
+npm i -g git-vault-manager
+```
+## Usage
+
 ```shell
 Usage: vault [options] [command]
 
@@ -26,6 +32,11 @@ Commands:
   state|s          prints the vault state
   help [command]   display help for command
 ```
+
+### Init the vault
+1. First, create a git repo for the fault
+2. `cd` to that repo
+3. `vault init -p 'strong password' -r $PWD` (this sets the password and the root dir `r` tp the current path)
 
 # Licence
 ![License](https://raw.githubusercontent.com/ValiDraganescu/serverless-log-remover/HEAD/eupl.jpg
