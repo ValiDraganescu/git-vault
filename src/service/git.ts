@@ -39,4 +39,5 @@ export async function gitCommit(message: string) {
 export async function gitPersist() {
     await gitAddAll();
     await gitCommit('Persisting data');
+    console.log(chalk.green('Update persisted.'));
 }

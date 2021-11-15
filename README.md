@@ -38,6 +38,10 @@ Commands:
 2. `cd` to that repo
 3. `vault init -p 'strong password' -r $PWD` (this sets the password and the root dir `r` tp the current path)
 
+### To delete a file from git (clean password file for example)
+```shell
+git filter-branch --index-filter 'rm -f /workspace/store' -- --all
+```
 # Licence
 ![License](https://raw.githubusercontent.com/ValiDraganescu/serverless-log-remover/HEAD/eupl.jpg
 )

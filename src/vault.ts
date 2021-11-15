@@ -19,9 +19,11 @@ if (!metadata.isAutoLockActive) {
     fork(path.join(__dirname, '/service/lock-vault.js'));
 }
 
+const packageJson = require('../package.json');
+
 
 program
-    .version('1.4.0')
+    .version('1.4.2')
     .description("vault cli for managing secrets")
     .command('init', 'initialize vault with a password').alias('i')
     .command('workspace', 'creates a workspace folder inside the root dir').alias('wp')

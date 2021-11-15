@@ -49,7 +49,13 @@ async function main() {
     }
     const input = fs.readFileSync(file, 'utf8');
     const decrypted = encryption.decrypt(input);
+
     const decryptedFile = path.join(metadata.rootDir, workspaceName, 'decrypted', fileName.split('.').slice(0, -1).join('.'));
+    const decryptedFileDir = decryptedFile.split('/').slice(0, -1).join('/');
+    if (!fs.existsSync(decryptedFileDir)) {
+        fs.mkdirSync(decryptedFileDir, {recursive: true});
+    }
+
     fs.writeFileSync(decryptedFile, decrypted);
     if (deleteOriginal) {
         fs.rmSync(file);
@@ -57,5 +63,7 @@ async function main() {
 
     console.log(chalk.green(`File ${file} decrypted`));
 }
+
+//bitcoin ethereum tether solana cardano polkadot dogecoin
 
 main().then();
