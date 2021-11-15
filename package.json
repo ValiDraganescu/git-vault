@@ -1,6 +1,6 @@
 {
   "name": "git-vault-manager",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "vault for secret management stored on git",
   "main": "./lib/vault.js",
   "bin": {

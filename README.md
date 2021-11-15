@@ -1,4 +1,4 @@
-# vault is a nodejs cli for managing secrets stored on git 
+# git-vault-manager is a nodejs cli for managing secrets stored on git 
 ## (partly inspired by last pass and such)
 
 ## Work in progress, do not use this to store secrets :)
