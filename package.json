@@ -1,0 +1,37 @@
+{
+  "name": "vault",
+  "version": "1.3.0",
+  "description": "vault for secret management",
+  "main": "./lib/vault.js",
+  "bin": {
+    "vault": "./lib/vault.js"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/vault.ts",
+    "create": "npm run build",
+    "build": "tsc -p .",
+    "local": "sudo npm i -g && vault",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "clipboardy": "^3.0.0",
+    "commander": "^8.3.0",
+    "crypto": "^1.0.1",
+    "figlet": "^1.5.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/clear": "^0.1.2",
+    "@types/figlet": "^1.5.4",
+    "@types/node": "^16.11.7",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
